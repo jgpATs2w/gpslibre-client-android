@@ -1,0 +1,11 @@
+Projecto eclipse con el plugin de android.
+LAs instrucciones de la instalación están en http://developer.android.com/sdk/installing/installing-adt.html
+
+La funcionalidad básica de la aplicación es:
+- Transmitir datos de posición a un script que permita leer los datos de la url.
+- Transmitir datos de nivel de batería.
+- Optimizar el uso de la batería, para su empleo en lugares sin alimentacion. En el momento actual se encuentra en 12-24 h con un intervalo de conexión de 5 min en zona con mala cobertura GPRS.
+
+Requisitos:
+- Telefono android con api level 10.
+- Tarjeta SIM con la solicitud de PIN desactivada y conectividad de datos.
