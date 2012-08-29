@@ -1,0 +1,9 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+	<color name="backcolor">#000000</color>
+	<color name="fontcolor">#FFFFFF</color>
+    <style name="GPSLibreTheme" parent="android:Theme.Light" >
+        <item name="android:windowBackground">@color/backcolor</item>
+    	<item name="android:colorBackground">@color/backcolor</item>
+    	<item name="android:textColor">@color/fontcolor</item>
+    </style>
+</resources>

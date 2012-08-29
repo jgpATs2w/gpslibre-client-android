@@ -1,0 +1,43 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="eleuteron.gpslibre.ui"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="15" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/GPSLibreTheme" >
+        <activity
+            android:name="eleuteron.gpslibre.ui.Status"
+            android:label="@string/title_activity_main" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="eleuteron.gpslibre.ui.Settings"
+            android:label="@string/title_activity_settings" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service android:enabled="true" android:name="eleuteron.gpslibre.services.MainService" />
+        <service android:enabled="true" android:name="eleuteron.gpslibre.services.AlarmService" />
+        <service android:enabled="true" android:name="eleuteron.gpslibre.net.GPRSService" />
+        <service android:enabled="true" android:name="eleuteron.gpslibre.location.GPSService" />
+        <service android:enabled="true" android:name="eleuteron.gpslibre.location.TimeoutGPS" />
+    </application>
+
+</manifest>

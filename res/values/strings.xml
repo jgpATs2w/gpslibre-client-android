@@ -1,0 +1,17 @@
+<resources>
+
+    <string name="app_name">GPSLibre</string>
+    <string name="menu_settings">Configurar</string>
+    <string name="menu_exit">Salir</string>
+    <string name="title_activity_main">GPSLibre</string>
+    <string name="gps_label">GPS:</string>
+    <string name="gprs_label">GPRS:</string>
+    <string name="gps_default">waiting..</string>
+    <string name="gprs_default">waiting..</string>
+    <string name="lon_default">Inicializando...</string>
+    <string name="menu_test">Run test..</string>
+    <string name="url_default">http://138.100.67.186/index.html</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+</resources>

@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/gps_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/gps_label"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/gprs_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/gps_label"
+        android:layout_marginTop="24dp"
+        android:text="@string/gprs_label"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/gprs_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/gprs_label"
+        android:layout_alignBottom="@+id/gprs_label"
+        android:layout_marginLeft="36dp"
+        android:layout_toRightOf="@+id/gprs_label"
+        android:text="@string/gprs_default"
+        android:textAppearance="?android:attr/textAppearanceLarge" 
+        android:freezesText="true"/>
+
+    <TextView
+        android:id="@+id/gps_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/gprs_status"
+        android:layout_alignParentTop="true"
+        android:text="@string/gps_default"
+        android:textAppearance="?android:attr/textAppearanceLarge" 
+        android:freezesText="true"/>
+
+	<TextView
+	    android:id="@+id/remainig_time"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/gprs_status"
+	    android:layout_marginLeft="33dp"
+	    android:layout_marginTop="19dp"
+	    android:layout_toRightOf="@+id/gprs_status"
+	    android:text="00:00"
+	    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+	<TextView
+	    android:id="@+id/status_last_time"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBaseline="@+id/remainig_time"
+	    android:layout_alignBottom="@+id/remainig_time"
+	    android:layout_alignLeft="@+id/gprs_status"
+	    android:text="BigBang"
+	    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>
