@@ -27,6 +27,7 @@ public class GPRSService extends Service {
 		Runnable run = new Runnable(){
 			@Override
 			public void run() {
+				Utils.GPRSStatusUpdate("registrando en red...");
 				int i =0; while(!isNetworkAvailable()){i++;
 					if(i==1) setAirplaneModeOn(false);
 					try {
@@ -35,7 +36,14 @@ public class GPRSService extends Service {
 					
 					if(i>Statics.GPRSTimeout*2){timeoutReached(); break; }
 				}
-				Say((connect2Server())? "Connected to server" : "Server update failed!");
+				Say((connect2Server())? "Conexion OK" : "fallo de conexion");
+				if(connect2Server()){
+					Say("conexion OK");
+					Utils.StatusAlertUpdate("La ultima conexion fue debuti.");
+				}else{
+					Say("fallo de conexion");
+					Utils.StatusAlertUpdate("La ultima conexion fallo conectando al servidor.");
+				}
 
 				stopConnection();
 			}
@@ -45,16 +53,19 @@ public class GPRSService extends Service {
 		return START_STICKY;
 	}
 	private void stopConnection(){
-		Utils.Say("finish with GPRS work");
 		setAirplaneModeOn(true);
 		
 		stopService(new Intent(this, AlarmService.class));
+
+		Utils.GPRSStatusUpdate("desconectado");
 	}
 	private void timeoutReached(){
 		setAirplaneModeOn(true);
+		Utils.StatusAlertUpdate("En la ultima conexion, no se pudo registrar. Revisa que la red movil este activada y que haya cobertura.");
 	}
 	public boolean connect2Server(){
-		Utils.Say("connecting to server...");
+		Utils.Say("connecting to server..."); 
+		Utils.GPRSStatusUpdate("conectando al servidor...");
     	try{
         	return connect(getUrl());
         	
@@ -62,7 +73,7 @@ public class GPRSService extends Service {
         }catch (IOException e){Utils.Say(this.getClass(), "ioexception!!"); return false;}
     }
     public boolean connect(String url) throws ClientProtocolException, IOException{
-    	Say("connecting to "+url);
+    	Utils.Say("connecting to "+url);
     	HttpClient client = new DefaultHttpClient();
     	HttpGet request = new HttpGet(url);
     	HttpResponse response = client.execute(request);
@@ -89,7 +100,6 @@ public class GPRSService extends Service {
         NetworkInfo networkInfo = Statics.ConnMgr.getActiveNetworkInfo();
       
         if (networkInfo != null && networkInfo.isConnected()) {
-        	Utils.GPRSStatusUpdate("Red disponible");
             return true;
         }
         //Utils.Say("network not available yet");
@@ -108,10 +118,12 @@ public class GPRSService extends Service {
       intent.putExtra("state", !isEnabled);
       Statics.Main.sendBroadcast(intent);
     }
-    private void Say(String m){Utils.Say(this.getClass(), m);}
+    private void Say(String m){
+    	Utils.Say(this.getClass(), m); 
+		Utils.GPRSStatusUpdate(m);
+	}
 	@Override
 	public IBinder onBind(Intent intent) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

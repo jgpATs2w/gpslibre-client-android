@@ -2,6 +2,7 @@ package eleuteron.gpslibre.ui;
 
 import eleuteron.gpslibre.services.MainService;
 import eleuteron.gpslibre.utils.Statics;
+import eleuteron.gpslibre.utils.Utils;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -31,7 +32,7 @@ public class Settings extends Activity {
     @Override
     public void onBackPressed() {
     	Toast.makeText(getApplicationContext(), "recargando configuracion", Toast.LENGTH_SHORT).show();
-    	saveId();
+    	saveId(); Utils.StatusIdUpdate();
     	Intent intent = new Intent(this,MainService.class);
     	stopService(intent);
     	startService(intent);
@@ -40,6 +41,7 @@ public class Settings extends Activity {
     private void saveId(){
     	EditText id = (EditText) findViewById(R.id.menu_settings_id);
     	Statics.ID = id.getText().toString();
+    
     }
     private void setEditText(){
     	final EditText url = (EditText) findViewById(R.id.menu_settings_url);

@@ -12,17 +12,15 @@ public class Statics {
 	public static Location loc = null;
 	
 	public static ConnectivityManager ConnMgr = null;
-	//public static GPRSManager GPRSManager = null;
 	
 	public static LocationManager LocMgr = null;
-	//public static GPSManager GPSMgr = null;
 	public static GPSLocationListener LocLtnr = null;
 	public static GPSService GPSService = null;
 	
 	public static boolean TimerTaskRunning = false;
 	
-	public static String URL = "http://visor.gpslibre.es/php/save_pos.php", ID="Android";
-	public static int GPSTimeout = 120, GPRSTimeout = 30, Interval=60;
+	public static String URL = "http://visor.gpslibre.es/php/save_pos.php", ID="sinid";
+	public static int GPSTimeout = 120, GPRSTimeout = 30, Interval=5;
 	public static int batt = -1;
 	
 	public static long IntervalTic = 0;

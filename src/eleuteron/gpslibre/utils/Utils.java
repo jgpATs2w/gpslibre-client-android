@@ -2,6 +2,7 @@ package eleuteron.gpslibre.utils;
 
 import java.util.Date;
 
+import android.R;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -29,6 +30,22 @@ public class Utils {
 			@Override
 			public void run() {
 				Statics.GPSStatusText.setText(gpstext);
+			}
+		});
+	}
+	public static void StatusIdUpdate(){
+		Statics.Main.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				Statics.Main.ViewIDUpdate();
+			}
+		});
+	}
+	public static void StatusAlertUpdate(final String t){
+		Statics.Main.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				Statics.Main.ViewAlertUpdate(t);
 			}
 		});
 	}

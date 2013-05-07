@@ -15,6 +15,7 @@ public class GPSService extends Service{
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId){
 		Log.i(this.getClass().getCanonicalName(),"starting GPSService");
+		Utils.StatusAlertUpdate("Inicializando el servicio GPS, en la linea GPS especifica el estado.");
 
 		if(Statics.LocLtnr == null) Statics.LocLtnr = new GPSLocationListener(this);
 		Statics.GPSService = this;
@@ -37,7 +38,7 @@ public class GPSService extends Service{
 					} catch (InterruptedException e) {e.printStackTrace();}
 				}
 				
-				Log.i("","GPS timeout reached. Stop GPS to save battery");
+				Log.i("","GPS timeout reached");
 				stopGPS(false);
 			}
 		};
@@ -47,14 +48,20 @@ public class GPSService extends Service{
     public void stopGPS(boolean GOGPRS){
     	Statics.LocMgr.removeUpdates(Statics.LocLtnr);
     	
-    	Utils.GPSStatusUpdate("Parado "+GOGPRS+" "+Utils.getHM(System.currentTimeMillis()));
+    	//Utils.GPSStatusUpdate("Parado "+GOGPRS+" "+Utils.getHM(System.currentTimeMillis()));
     	
-    	if(GOGPRS) startService(new Intent(this, GPRSService.class));
-    	else stopService(new Intent(this, AlarmService.class));
-    	
-    	if(timeoutThread != null){
-    		timeoutThread = null;
+    	if(GOGPRS){
+    		Utils.StatusAlertUpdate("Coordenadas recibidas! subiendo datos...");
+    		startService(new Intent(this, GPRSService.class));
+    		if(timeoutThread != null){
+        		timeoutThread = null;
+        	}
+    	}else{
+    		//Utils.StatusAlertUpdate("En la ultima conexion no hubo datos del satelite.");
+    		stopService(new Intent(this, AlarmService.class));
     	}
+    	
+    	
     }
 	@Override
 	public IBinder onBind(Intent intent) {

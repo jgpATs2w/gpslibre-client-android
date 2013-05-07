@@ -35,6 +35,13 @@ public class Status extends Activity {
         return true;
     }
     @Override
+    public void onBackPressed() { 
+    	Intent i = new Intent("android.intent.action.MAIN");
+        i.addCategory("android.intent.category.HOME");
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
+    }
+    @Override
     public boolean onOptionsItemSelected(MenuItem item){
     	switch(item.getItemId()){
     		case R.id.menu_exit:
@@ -61,7 +68,7 @@ public class Status extends Activity {
     	return true;
     }
     
-    private void init(){    	
+    private void init(){    
     	Statics.Main = this;
     	Statics.GPSStatusText = (TextView) findViewById(R.id.gps_status);
     	Statics.GPRSStatus = (TextView) findViewById(R.id.gprs_status);
@@ -70,8 +77,18 @@ public class Status extends Activity {
     	Statics.LocMgr = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
     	
     	setRemainingTimer(); setLastTimer();
+    	ViewIDUpdate();
+    	ViewAlertUpdate("Aun no inicializado, vete al menu y presiona Start o Configurar.");
     	Say("Initialized for first time.");
     	
+    }
+    public void ViewIDUpdate(){
+    	TextView tv = (TextView) findViewById(R.id.main_view_id);
+    	tv.setText(Statics.ID);
+    }
+    public void ViewAlertUpdate(String t){
+    	TextView tv = (TextView) findViewById(R.id.main_view_alert);
+    	tv.setText(t);
     }
     private void setRemainingTimer(){
     	final TextView RemainingTimer = (TextView) findViewById(R.id.remainig_time);

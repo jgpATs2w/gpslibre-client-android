@@ -30,9 +30,9 @@
         android:layout_alignBottom="@+id/gprs_label"
         android:layout_marginLeft="36dp"
         android:layout_toRightOf="@+id/gprs_label"
+        android:freezesText="true"
         android:text="@string/gprs_default"
-        android:textAppearance="?android:attr/textAppearanceLarge" 
-        android:freezesText="true"/>
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/gps_status"
@@ -40,29 +40,78 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/gprs_status"
         android:layout_alignParentTop="true"
+        android:freezesText="true"
         android:text="@string/gps_default"
-        android:textAppearance="?android:attr/textAppearanceLarge" 
-        android:freezesText="true"/>
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-	<TextView
-	    android:id="@+id/remainig_time"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/gprs_status"
-	    android:layout_marginLeft="33dp"
-	    android:layout_marginTop="19dp"
-	    android:layout_toRightOf="@+id/gprs_status"
-	    android:text="00:00"
-	    android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/gprs_label"
+        android:layout_marginTop="21dp"
+        android:text="Ultima con."
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-	<TextView
-	    android:id="@+id/status_last_time"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_alignBaseline="@+id/remainig_time"
-	    android:layout_alignBottom="@+id/remainig_time"
-	    android:layout_alignLeft="@+id/gprs_status"
-	    android:text="BigBang"
-	    android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:id="@+id/status_last_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_marginLeft="41dp"
+        android:layout_toRightOf="@+id/textView1"
+        android:text="nunca"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/remainig_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/status_last_time"
+        android:layout_below="@+id/status_last_time"
+        android:layout_marginTop="39dp"
+        android:text="00:00"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/remainig_time"
+        android:layout_alignParentLeft="true"
+        android:text="Proxima con."
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="24dp"
+        android:text="ID"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/main_view_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignLeft="@+id/gprs_status"
+        android:text="n/a"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/main_view_alert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="71dp" />
 
 </RelativeLayout>

@@ -40,9 +40,6 @@ public class MainService extends Service{
         am.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
                         firstTime, Statics.Interval*60*1000, mAlarmSender);
         
-        
-
-        Toast.makeText(this, "Alarm scheduled", Toast.LENGTH_LONG).show();
         return START_STICKY;
     }
     

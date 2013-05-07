@@ -15,7 +15,6 @@ import android.os.IBinder;
 import android.os.Parcel;
 import android.os.RemoteException;
 import android.util.Log;
-import android.widget.Toast;
 
 public class AlarmService extends Service{
 	public void goTest(){
@@ -24,15 +23,13 @@ public class AlarmService extends Service{
 		goGPS();
 	}
 	 public void goGPS(){
-		 Utils.Say("starting GPS...");
-		 //if(Statics.TimerTaskRunning){Utils.Toast("Proceso en ejecucion"); return;}
-	
+		 Utils.Say("starting GPS...");	
 		 startService(new Intent(this, GPSService.class));
 	 }
 	 public void goGPRS(){
 	     Utils.Say("going to GPRS..");
 	    
-		startService(new Intent(this, GPRSService.class));
+	     startService(new Intent(this, GPRSService.class));
 	 }
 	 public static void finish(){
 		 Statics.TimerTaskRunning = false;
@@ -45,7 +42,6 @@ public class AlarmService extends Service{
 
         showNotification();
         
-        
         Thread thr = new Thread(null, mTask, "AlarmService");
         	thr.start();
     }
@@ -53,8 +49,6 @@ public class AlarmService extends Service{
     @Override
     public void onDestroy() {
         mNM.cancel(999);
-
-        Toast.makeText(this, "All work done!", Toast.LENGTH_SHORT).show();
         
         finish();
     }
